@@ -27,6 +27,24 @@
     <ClCompile Include="globals.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="guest_rooms.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="guest_rooms.ixx">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="universal.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="universal.ixx">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rooms.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rooms.ixx">
+      <Filter>资源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globals.h">

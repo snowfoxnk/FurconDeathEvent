@@ -1,0 +1,46 @@
+export module rooms;
+import <iostream>;
+import <string>;
+import <vector>;
+import <cstdlib>;
+import <conio.h>;
+import <random>;
+import <limits>;
+import "globals.h";
+import universal;
+using namespace std;
+export
+{
+	void guest_rooms_701_708();
+	void guest_rooms_709_716();
+	void guest_rooms_717_724();
+	void guest_rooms_725_732();
+	void guest_rooms_801_808();
+	void guest_rooms_809_816();
+	void guest_rooms_817_824();
+	void guest_rooms_825_832();
+	void guest_rooms_901_908();
+	void guest_rooms_909_916();
+	void guest_rooms_917_924();
+	void guest_rooms_925_932();
+	void guest_rooms_1001_1008();
+	void guest_rooms_1009_1016();
+	void guest_rooms_1017_1024();
+	void guest_rooms_1025_1032();
+	void guest_rooms_1101_1108();
+	void guest_rooms_1109_1116();
+	void guest_rooms_1117_1124();
+	void guest_rooms_1125_1132();
+	void guest_rooms_1201_1208();
+	void guest_rooms_1209_1216();
+	void guest_rooms_1217_1224();
+	void guest_rooms_1225_1232();
+	void guest_rooms_1301_1308();
+	void guest_rooms_1309_1316();
+	void guest_rooms_1317_1324();
+	void guest_rooms_1325_1332();
+	void guest_rooms_1401_1408();
+	void guest_rooms_1409_1416();
+	void guest_rooms_1417_1424();
+	void guest_rooms_1425_1432();
+}
