@@ -12,6 +12,7 @@ import rooms;
 using namespace std;
 void floor_7()
 {
+	bool back_to_elevator_room{ false };
 	while (true)
 	{
 		time_output();
@@ -30,12 +31,30 @@ void floor_7()
 		switch (choice_input)
 		{
 		case 1:
+			guest_rooms_701_708();
+			break;
+		case 2:
+			guest_rooms_709_716();
+			break;
+		case 3:
+			guest_rooms_717_724();
+			break;
+			guest_rooms_725_732();
+		case 4:
+			break;
+		case 5:
+			back_to_elevator_room = true;
+			break;		//仍然是choice == 11，所以不用再写。
+		}
+		if (back_to_elevator_room == true)
+		{
 			break;
 		}
 	}
 }
 void floor_8()
 {
+	bool back_to_elevator_room{ false };
 	while (true)
 	{
 		time_output();
@@ -54,12 +73,30 @@ void floor_8()
 		switch (choice_input)
 		{
 		case 1:
+			guest_rooms_801_808();
+			break;
+		case 2:
+			guest_rooms_809_816();
+			break;
+		case 3:
+			guest_rooms_817_824();
+			break;
+			guest_rooms_825_832();
+		case 4:
+			break;
+		case 5:
+			back_to_elevator_room = true;
+			break;		//仍然是choice == 11，所以不用再写。
+		}
+		if (back_to_elevator_room == true)
+		{
 			break;
 		}
 	}
 }
 void floor_9()
 {
+	bool back_to_elevator_room{ false };
 	while (true)
 	{
 		time_output();
@@ -78,12 +115,30 @@ void floor_9()
 		switch (choice_input)
 		{
 		case 1:
+			guest_rooms_901_908();
+			break;
+		case 2:
+			guest_rooms_909_916();
+			break;
+		case 3:
+			guest_rooms_917_924();
+			break;
+			guest_rooms_925_932();
+		case 4:
+			break;
+		case 5:
+			back_to_elevator_room = true;
+			break;		//仍然是choice == 11，所以不用再写。
+		}
+		if (back_to_elevator_room == true)
+		{
 			break;
 		}
 	}
 }
 void floor_10()
 {
+	bool back_to_elevator_room{ false };
 	while (true)
 	{
 		time_output();
@@ -102,13 +157,30 @@ void floor_10()
 		switch (choice_input)
 		{
 		case 1:
-			choice = 14;
+			guest_rooms_1001_1008();
+			break;
+		case 2:
+			guest_rooms_1009_1016();
+			break;
+		case 3:
+			guest_rooms_1017_1024();
+			break;
+			guest_rooms_1025_1032();
+		case 4:
+			break;
+		case 5:
+			back_to_elevator_room = true;
+			break;		//仍然是choice == 11，所以不用再写。
+		}
+		if (back_to_elevator_room == true)
+		{
 			break;
 		}
 	}
 }
 void floor_11()
 {
+	bool back_to_elevator_room{ false };
 	while (true)
 	{
 		time_output();
@@ -127,12 +199,30 @@ void floor_11()
 		switch (choice_input)
 		{
 		case 1:
+			guest_rooms_1101_1108();
+			break;
+		case 2:
+			guest_rooms_1109_1116();
+			break;
+		case 3:
+			guest_rooms_1117_1124();
+			break;
+			guest_rooms_1125_1132();
+		case 4:
+			break;
+		case 5:
+			back_to_elevator_room = true;
+			break;		//仍然是choice == 11，所以不用再写。
+		}
+		if (back_to_elevator_room == true)
+		{
 			break;
 		}
 	}
 }
 void floor_12()
 {
+	bool back_to_elevator_room{ false };
 	while (true)
 	{
 		time_output();
@@ -151,12 +241,30 @@ void floor_12()
 		switch (choice_input)
 		{
 		case 1:
+			guest_rooms_1201_1208();
+			break;
+		case 2:
+			guest_rooms_1209_1216();
+			break;
+		case 3:
+			guest_rooms_1217_1224();
+			break;
+			guest_rooms_1225_1232();
+		case 4:
+			break;
+		case 5:
+			back_to_elevator_room = true;
+			break;		//仍然是choice == 11，所以不用再写。
+		}
+		if (back_to_elevator_room == true)
+		{
 			break;
 		}
 	}
 }
 void floor_13()
 {
+	bool back_to_elevator_room{ false };
 	while (true)
 	{
 		time_output();
@@ -175,12 +283,30 @@ void floor_13()
 		switch (choice_input)
 		{
 		case 1:
+			guest_rooms_1301_1308();
+			break;
+		case 2:
+			guest_rooms_1309_1316();
+			break;
+		case 3:
+			guest_rooms_1317_1324();
+			break;
+			guest_rooms_1325_1332();
+		case 4:
+			break;
+		case 5:
+			back_to_elevator_room = true;
+			break;		//仍然是choice == 11，所以不用再写。
+		}
+		if (back_to_elevator_room == true)
+		{
 			break;
 		}
 	}
 }
 void floor_14()
 {
+	bool back_to_elevator_room{ false };
 	while (true)
 	{
 		time_output();
@@ -199,6 +325,23 @@ void floor_14()
 		switch (choice_input)
 		{
 		case 1:
+			guest_rooms_1401_1408();
+			break;
+		case 2:
+			guest_rooms_1409_1416();
+			break;
+		case 3:
+			guest_rooms_1417_1424();
+			break;
+			guest_rooms_1425_1432();
+		case 4:
+			break;
+		case 5:
+			back_to_elevator_room = true;
+			break;		//仍然是choice == 11，所以不用再写。
+		}
+		if (back_to_elevator_room == true)
+		{
 			break;
 		}
 	}

@@ -107,7 +107,7 @@ void asking_questions(vector<string>options)
 		if (keyboard_input >= '1' && keyboard_input <= '0' + options.size())
 		{
 			choice_input = keyboard_input - '0';
-			cout << choice_input
+			cout << options[choice_input - 1]
 				<< endl;
 			break;
 		}
