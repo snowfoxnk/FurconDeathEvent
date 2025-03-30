@@ -44,7 +44,8 @@ void floor_7()
 			break;
 		case 5:
 			back_to_elevator_room = true;
-			break;		//仍然是choice == 11，所以不用再写。
+			choice = 11;
+			break;
 		}
 		if (back_to_elevator_room == true)
 		{
@@ -86,7 +87,8 @@ void floor_8()
 			break;
 		case 5:
 			back_to_elevator_room = true;
-			break;		//仍然是choice == 11，所以不用再写。
+			choice = 11;
+			break;
 		}
 		if (back_to_elevator_room == true)
 		{
@@ -128,7 +130,8 @@ void floor_9()
 			break;
 		case 5:
 			back_to_elevator_room = true;
-			break;		//仍然是choice == 11，所以不用再写。
+			choice = 11;
+			break;
 		}
 		if (back_to_elevator_room == true)
 		{
@@ -170,7 +173,8 @@ void floor_10()
 			break;
 		case 5:
 			back_to_elevator_room = true;
-			break;		//仍然是choice == 11，所以不用再写。
+			choice = 11;
+			break;
 		}
 		if (back_to_elevator_room == true)
 		{
@@ -212,7 +216,8 @@ void floor_11()
 			break;
 		case 5:
 			back_to_elevator_room = true;
-			break;		//仍然是choice == 11，所以不用再写。
+			choice = 11;
+			break;
 		}
 		if (back_to_elevator_room == true)
 		{
@@ -254,7 +259,8 @@ void floor_12()
 			break;
 		case 5:
 			back_to_elevator_room = true;
-			break;		//仍然是choice == 11，所以不用再写。
+			choice = 11;
+			break;
 		}
 		if (back_to_elevator_room == true)
 		{
@@ -296,7 +302,8 @@ void floor_13()
 			break;
 		case 5:
 			back_to_elevator_room = true;
-			break;		//仍然是choice == 11，所以不用再写。
+			choice = 11;
+			break;
 		}
 		if (back_to_elevator_room == true)
 		{
@@ -338,7 +345,8 @@ void floor_14()
 			break;
 		case 5:
 			back_to_elevator_room = true;
-			break;		//仍然是choice == 11，所以不用再写。
+			choice = 11;
+			break;
 		}
 		if (back_to_elevator_room == true)
 		{

@@ -23,8 +23,8 @@ void own_room()
 	{
 		"1.走廊"
 	};
-	asking_questions(options_own_room);		//这个不知道要不要留着，其实只有一个选项，但switch(furcon_time)可能会导致出现其他选项，所以先留着看看之后要不要删。
-	switch (choice_input)
+	asking_questions(options_own_room);
+	switch (choice_input)		//这个不知道要不要留着，其实只有一个选项，但switch(furcon_time)可能会导致出现其他选项，所以先留着看看之后要不要删。
 	{
 	case 1:
 		break;
@@ -59,6 +59,7 @@ void guest_rooms_701_708()
 			break;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
+			get_enter();
 			break;
 		}
 		if (back_to_floor_7 == true)
