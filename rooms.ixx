@@ -1,11 +1,5 @@
 export module rooms;
-import <iostream>;
-import <string>;
-import <vector>;
-import <cstdlib>;
-import <conio.h>;
-import <random>;
-import <limits>;
+import std;
 import "globals.h";
 import universal;
 using namespace std;

@@ -1,12 +1,7 @@
 module universal;
-import <iostream>;
-import <string>;
-import <vector>;
-import <cstdlib>;
-import <conio.h>;
-import <random>;
-import <limits>;
+import std;
 import <Windows.h>;
+import <conio.h>;
 import "globals.h";
 using namespace std;
 void disable_echo()
