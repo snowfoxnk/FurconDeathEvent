@@ -1,6 +1,6 @@
 export module scenes;
 import std;
-import "globals.h";
+import globals;
 import universal;
 import guest_rooms;
 using namespace std;
@@ -8,7 +8,7 @@ export
 {
 	void hotel_lobby();
 	void reception_desk();
-	void main_renue();
+	void main_venue();
 	void outdoor_terrace();
 	void man_s_changing_room();
 	void women_s_changing_room();

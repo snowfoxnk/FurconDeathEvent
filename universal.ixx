@@ -1,12 +1,11 @@
 export module universal;
 import std;
-import <Windows.h>;
-import "globals.h";
+import globals;
 using namespace std;
 export
 {
-	void disable_echo();
-	void enable_echo();
+	void save_state();
+	void load_state();
 	void get_enter();
 	void time_output();
 	void check();

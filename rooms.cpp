@@ -1,39 +1,84 @@
 module rooms;
 import std;
-import "globals.h";
+import globals;
 import universal;
 using namespace std;
+
 void own_room()
 {
-	time_output();
-	cout << "你回到了自己的房间。";
-	get_enter();
-	check();
-	switch (furcon_time)
-	{
-
-	}
-	vector<string>options_own_room
-	{
-		"1.走廊"
-	};
-	asking_questions(options_own_room);
-	switch (choice_input)		//这个不知道要不要留着，其实只有一个选项，但switch(furcon_time)可能会导致出现其他选项，所以先留着看看之后要不要删。
-	{
-	case 1:
-		break;
-	}
-}
-void guest_rooms_701_708()
-{
-	bool back_to_floor_7{ false };
 	while (true)
 	{
+		location.in_rooms = true;
+		location.room = Room::own_room;
 		time_output();
-		cout << "你来到了走廊：701-708。";
+		cout << "你回到了自己的房间。";
 		get_enter();
 		check();
-		vector<string>options_guest_rooms_701_708
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_own_room;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_own_room:
+		vector<string>options_own_room
+		{
+			"1.走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
+		};
+		asking_questions(options_own_room);
+		switch (choice_input)
+		{
+		case 1:
+			location.in_rooms = false;
+			return;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
+		}
+	}
+}	//返回hallway_1017_1024()
+
+void hallway_701_708()
+{
+	while (true)
+	{
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_701_708;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：701-708。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_701_708;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_701_708:
+		vector<string>options_hallway_701_708
 		{
 			"1.701",
 			"2.702",
@@ -43,35 +88,60 @@ void guest_rooms_701_708()
 			"6.706",
 			"7.707",
 			"8.708",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_701_708);
+		asking_questions(options_hallway_701_708);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_7 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
 			get_enter();
-			break;
-		}
-		if (back_to_floor_7 == true)
-		{
-			break;
+			continue;
 		}
 	}
-}
-void guest_rooms_709_716()
+}	//返回floor_7()
+
+void hallway_709_716()
 {
-	bool back_to_floor_7{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：709-716。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_709_716
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_709_716;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：709-716。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_709_716;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_709_716:
+		vector<string>options_hallway_709_716
 		{
 			"1.709",
 			"2.710",
@@ -79,36 +149,62 @@ void guest_rooms_709_716()
 			"4.712",
 			"5.713",
 			"6.714",
-			"7.715", 
+			"7.715",
 			"8.716",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_709_716);
+		asking_questions(options_hallway_709_716);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_7 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_7 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_717_724()
+}	//返回floor_7()
+
+void hallway_717_724()
 {
-	bool back_to_floor_7{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：717-724。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_717_724
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_717_724;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：717-724。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_717_724;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_717_724:
+		vector<string>options_hallway_717_724
 		{
 			"1.717",
 			"2.718",
@@ -118,34 +214,60 @@ void guest_rooms_717_724()
 			"6.722",
 			"7.723",
 			"8.724",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_717_724);
+		asking_questions(options_hallway_717_724);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_7 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_7 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_725_732()
+}	//返回floor_7()
+
+void hallway_725_732()
 {
-	bool back_to_floor_7{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：725-732。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_725_732
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_725_732;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：725-732。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_725_732;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_725_732:
+		vector<string>options_hallway_725_732
 		{
 			"1.725",
 			"2.726",
@@ -155,34 +277,60 @@ void guest_rooms_725_732()
 			"6.730",
 			"7.731",
 			"8.732",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_725_732);
+		asking_questions(options_hallway_725_732);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_7 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_7 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_801_808()
+}	//返回floor_7()
+
+void hallway_801_808()
 {
-	bool back_to_floor_8{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：801-808。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_801_808
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_801_808;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：801-808。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_801_808;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_801_808:
+		vector<string>options_hallway_801_808
 		{
 			"1.801",
 			"2.802",
@@ -192,34 +340,60 @@ void guest_rooms_801_808()
 			"6.806",
 			"7.807",
 			"8.808",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_801_808);
+		asking_questions(options_hallway_801_808);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_8 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_8 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_809_816()
+}	//返回floor_8()
+
+void hallway_809_816()
 {
-	bool back_to_floor_8{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：809-816。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_809_816
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_809_816;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：809-816。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_809_816;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_809_816:
+		vector<string>options_hallway_809_816
 		{
 			"1.809",
 			"2.810",
@@ -229,34 +403,60 @@ void guest_rooms_809_816()
 			"6.814",
 			"7.815",
 			"8.816",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_809_816);
+		asking_questions(options_hallway_809_816);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_8 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_8 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_817_824()
+}	//返回floor_8()
+
+void hallway_817_824()
 {
-	bool back_to_floor_8{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：817-824。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_817_824
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_817_824;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：817-824。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_817_824;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_817_824:
+		vector<string>options_hallway_817_824
 		{
 			"1.817",
 			"2.818",
@@ -266,34 +466,60 @@ void guest_rooms_817_824()
 			"6.822",
 			"7.823",
 			"8.824",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_817_824);
+		asking_questions(options_hallway_817_824);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_8 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_8 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_825_832()
+}	//返回floor_8()
+
+void hallway_825_832()
 {
-	bool back_to_floor_8{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：825-832。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_825_832
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_825_832;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：825-832。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_825_832;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_825_832:
+		vector<string>options_hallway_825_832
 		{
 			"1.825",
 			"2.826",
@@ -303,34 +529,60 @@ void guest_rooms_825_832()
 			"6.830",
 			"7.831",
 			"8.832",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_825_832);
+		asking_questions(options_hallway_825_832);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_8 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_8 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_901_908()
+}	//返回floor_8()
+
+void hallway_901_908()
 {
-	bool back_to_floor_9{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：901-908。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_901_908
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_901_908;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：901-908。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_901_908;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_901_908:
+		vector<string>options_hallway_901_908
 		{
 			"1.901",
 			"2.902",
@@ -340,34 +592,60 @@ void guest_rooms_901_908()
 			"6.906",
 			"7.907",
 			"8.908",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_901_908);
+		asking_questions(options_hallway_901_908);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_9 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_9 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_909_916()
+}	//返回floor_9()
+
+void hallway_909_916()
 {
-	bool back_to_floor_9{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：909-916。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_909_916
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_909_916;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：909-916。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_909_916;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_909_916:
+		vector<string>options_hallway_909_916
 		{
 			"1.909",
 			"2.910",
@@ -377,34 +655,60 @@ void guest_rooms_909_916()
 			"6.914",
 			"7.915",
 			"8.916",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_909_916);
+		asking_questions(options_hallway_909_916);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_9 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_9 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_917_924()
+}	//返回floor_9()
+
+void hallway_917_924()
 {
-	bool back_to_floor_9{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：917-924。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_917_924
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_917_924;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：917-924。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_917_924;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_917_924:
+		vector<string>options_hallway_917_924
 		{
 			"1.917",
 			"2.918",
@@ -414,34 +718,60 @@ void guest_rooms_917_924()
 			"6.922",
 			"7.923",
 			"8.924",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_917_924);
+		asking_questions(options_hallway_917_924);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_9 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_9 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_925_932()
+}	//返回floor_9()
+
+void hallway_925_932()
 {
-	bool back_to_floor_9{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：925-932。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_925_932
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_925_932;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：925-932。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_925_932;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_925_932:
+		vector<string>options_hallway_925_932
 		{
 			"1.925",
 			"2.926",
@@ -451,34 +781,60 @@ void guest_rooms_925_932()
 			"6.930",
 			"7.931",
 			"8.932",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_925_932);
+		asking_questions(options_hallway_925_932);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_9 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_9 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1001_1008()
+}	//返回floor_9()
+
+void hallway_1001_1008()
 {
-	bool back_to_floor_10{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1001-1008。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1001_1008
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1001_1008;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1001-1008。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1001_1008;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1001_1008:
+		vector<string>options_hallway_1001_1008
 		{
 			"1.1001",
 			"2.1002",
@@ -488,34 +844,60 @@ void guest_rooms_1001_1008()
 			"6.1006",
 			"7.1007",
 			"8.1008",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1001_1008);
+		asking_questions(options_hallway_1001_1008);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_10 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_10 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1009_1016()
+}	//返回floor_10()
+
+void hallway_1009_1016()
 {
-	bool back_to_floor_10{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1009-1016。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1009_1016
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1009_1016;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1009-1016。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1009_1016;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1009_1016:
+		vector<string>options_hallway_1009_1016
 		{
 			"1.1009",
 			"2.1010",
@@ -525,34 +907,61 @@ void guest_rooms_1009_1016()
 			"6.1014",
 			"7.1015",
 			"8.1016",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1009_1016);
+		asking_questions(options_hallway_1009_1016);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_10 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_10 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1017_1024()
+}	//返回floor_10()
+
+void hallway_1017_1024()
 {
-	bool back_to_floor_10{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1017-1024。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1017_1024
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1017_1024;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+			case 113:
+				own_room();
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1017-1024。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1017_1024;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1017_1024:
+		vector<string>options_hallway_1017_1024
 		{
 			"1.1017",
 			"2.1018",
@@ -562,37 +971,60 @@ void guest_rooms_1017_1024()
 			"6.1022",
 			"7.1023",
 			"8.1024",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1017_1024);
+		asking_questions(options_hallway_1017_1024);
 		switch (choice_input)
 		{
-		case 1:
-			own_room();
-			break;
-		case 9:
-			back_to_floor_10 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_10 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1025_1032()
+}	//返回floor_10()
+
+void hallway_1025_1032()
 {
-	bool back_to_floor_10{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1025-1032。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1025_1032
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1025_1032;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1025-1032。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1025_1032;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1025_1032:
+		vector<string>options_hallway_1025_1032
 		{
 			"1.1025",
 			"2.1026",
@@ -602,34 +1034,60 @@ void guest_rooms_1025_1032()
 			"6.1030",
 			"7.1031",
 			"8.1032",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1025_1032);
+		asking_questions(options_hallway_1025_1032);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_10 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_10 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1101_1108()
+}	//返回floor_10()
+
+void hallway_1101_1108()
 {
-	bool back_to_floor_11{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1101-1108。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1101_1108
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1101_1108;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1101-1108。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1101_1108;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1101_1108:
+		vector<string>options_hallway_1101_1108
 		{
 			"1.1101",
 			"2.1102",
@@ -639,34 +1097,60 @@ void guest_rooms_1101_1108()
 			"6.1106",
 			"7.1107",
 			"8.1108",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1101_1108);
+		asking_questions(options_hallway_1101_1108);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_11 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_11 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1109_1116()
+}	//返回floor_11()
+
+void hallway_1109_1116()
 {
-	bool back_to_floor_11{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1109-1116。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1109_1116
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1109_1116;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1109-1116。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1109_1116;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1109_1116:
+		vector<string>options_hallway_1109_1116
 		{
 			"1.1109",
 			"2.1110",
@@ -674,36 +1158,62 @@ void guest_rooms_1109_1116()
 			"4.1112",
 			"5.1113",
 			"6.1114",
-			"7.115",
+			"7.1115",
 			"8.1116",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1109_1116);
+		asking_questions(options_hallway_1109_1116);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_11 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_11 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1117_1124()
+}	//返回floor_11()
+
+void hallway_1117_1124()
 {
-	bool back_to_floor_11{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1117-1124。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1117_1124
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1117_1124;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1117-1124。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1117_1124;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1117_1124:
+		vector<string>options_hallway_1117_1124
 		{
 			"1.1117",
 			"2.1118",
@@ -713,34 +1223,60 @@ void guest_rooms_1117_1124()
 			"6.1122",
 			"7.1123",
 			"8.1124",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1117_1124);
+		asking_questions(options_hallway_1117_1124);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_11 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_11 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1125_1132()
+}	//返回floor_11()
+
+void hallway_1125_1132()
 {
-	bool back_to_floor_11{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1125-1132。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1125_1132
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1125_1132;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1125-1132。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1125_1132;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1125_1132:
+		vector<string>options_hallway_1125_1132
 		{
 			"1.1125",
 			"2.1126",
@@ -750,34 +1286,60 @@ void guest_rooms_1125_1132()
 			"6.1130",
 			"7.1131",
 			"8.1132",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1125_1132);
+		asking_questions(options_hallway_1125_1132);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_11 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_11 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1201_1208()
+}	//返回floor_11()
+
+void hallway_1201_1208()
 {
-	bool back_to_floor_12{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1201-1208。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1201_1208
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1201_1208;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1201-1208。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1201_1208;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1201_1208:
+		vector<string>options_hallway_1201_1208
 		{
 			"1.1201",
 			"2.1202",
@@ -787,34 +1349,60 @@ void guest_rooms_1201_1208()
 			"6.1206",
 			"7.1207",
 			"8.1208",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1201_1208);
+		asking_questions(options_hallway_1201_1208);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_12 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_12 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1209_1216()
+}	//返回floor_12()
+
+void hallway_1209_1216()
 {
-	bool back_to_floor_12{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1209-1216。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1209_1216
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1209_1216;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1209-1216。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1209_1216;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1209_1216:
+		vector<string>options_hallway_1209_1216
 		{
 			"1.1209",
 			"2.1210",
@@ -824,34 +1412,60 @@ void guest_rooms_1209_1216()
 			"6.1214",
 			"7.1215",
 			"8.1216",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1209_1216);
+		asking_questions(options_hallway_1209_1216);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_12 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_12 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1217_1224()
+}	//返回floor_12()
+
+void hallway_1217_1224()
 {
-	bool back_to_floor_12{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1217-1224。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1217_1224
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1217_1224;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1217-1224。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1217_1224;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1217_1224:
+		vector<string>options_hallway_1217_1224
 		{
 			"1.1217",
 			"2.1218",
@@ -861,34 +1475,60 @@ void guest_rooms_1217_1224()
 			"6.1222",
 			"7.1223",
 			"8.1224",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1217_1224);
+		asking_questions(options_hallway_1217_1224);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_12 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_12 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1225_1232()
+}	//返回floor_12()
+
+void hallway_1225_1232()
 {
-	bool back_to_floor_12{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1225-1232。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1225_1232
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1225_1232;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1225-1232。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1225_1232;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1225_1232:
+		vector<string>options_hallway_1225_1232
 		{
 			"1.1225",
 			"2.1226",
@@ -898,34 +1538,60 @@ void guest_rooms_1225_1232()
 			"6.1230",
 			"7.1231",
 			"8.1232",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1225_1232);
+		asking_questions(options_hallway_1225_1232);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_12 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_12 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1301_1308()
+}	//返回floor_12()
+
+void hallway_1301_1308()
 {
-	bool back_to_floor_13{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1301-1308。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1301_1308
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1301_1308;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1301-1308。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1301_1308;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1301_1308:
+		vector<string>options_hallway_1301_1308
 		{
 			"1.1301",
 			"2.1302",
@@ -935,34 +1601,60 @@ void guest_rooms_1301_1308()
 			"6.1306",
 			"7.1307",
 			"8.1308",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1301_1308);
+		asking_questions(options_hallway_1301_1308);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_13 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_13 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1309_1316()
+}	//返回floor_13()
+
+void hallway_1309_1316()
 {
-	bool back_to_floor_13{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1309-1316。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1309_1316
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1309_1316;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1309-1316。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1309_1316;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1309_1316:
+		vector<string>options_hallway_1309_1316
 		{
 			"1.1309",
 			"2.1310",
@@ -972,34 +1664,60 @@ void guest_rooms_1309_1316()
 			"6.1314",
 			"7.1315",
 			"8.1316",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1309_1316);
+		asking_questions(options_hallway_1309_1316);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_13 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_13 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1317_1324()
+}	//返回floor_13()
+
+void hallway_1317_1324()
 {
-	bool back_to_floor_13{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1317-1324。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1317_1324
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1317_1324;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1317-1324。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1317_1324;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1317_1324:
+		vector<string>options_hallway_1317_1324
 		{
 			"1.1317",
 			"2.1318",
@@ -1009,34 +1727,60 @@ void guest_rooms_1317_1324()
 			"6.1322",
 			"7.1323",
 			"8.1324",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1317_1324);
+		asking_questions(options_hallway_1317_1324);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_13 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_13 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1325_1332()
+}	//返回floor_13()
+
+void hallway_1325_1332()
 {
-	bool back_to_floor_13{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1325-1332。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1325_1332
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1325_1332;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1325-1332。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1325_1332;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1325_1332:
+		vector<string>options_hallway_1325_1332
 		{
 			"1.1325",
 			"2.1326",
@@ -1046,34 +1790,60 @@ void guest_rooms_1325_1332()
 			"6.1330",
 			"7.1331",
 			"8.1332",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1325_1332);
+		asking_questions(options_hallway_1325_1332);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_13 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_13 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1401_1408()
+}	//返回floor_13()
+
+void hallway_1401_1408()
 {
-	bool back_to_floor_14{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1401-1408。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1401_1408
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1401_1408;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1401-1408。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1401_1408;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1401_1408:
+		vector<string>options_hallway_1401_1408
 		{
 			"1.1401",
 			"2.1402",
@@ -1083,34 +1853,60 @@ void guest_rooms_1401_1408()
 			"6.1406",
 			"7.1407",
 			"8.1408",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1401_1408);
+		asking_questions(options_hallway_1401_1408);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_14 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_14 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1409_1416()
+}	//返回floor_14()
+
+void hallway_1409_1416()
 {
-	bool back_to_floor_14{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1409-1416。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1409_1416
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1409_1416;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1409-1416。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1409_1416;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1409_1416:
+		vector<string>options_hallway_1409_1416
 		{
 			"1.1409",
 			"2.1410",
@@ -1120,34 +1916,60 @@ void guest_rooms_1409_1416()
 			"6.1414",
 			"7.1415",
 			"8.1416",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1409_1416);
+		asking_questions(options_hallway_1409_1416);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_14 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_14 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1417_1424()
+}	//返回floor_14()
+
+void hallway_1417_1424()
 {
-	bool back_to_floor_14{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1417-1424。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1417_1424
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1417_1424;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1417-1424。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1417_1424;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1417_1424:
+		vector<string>options_hallway_1417_1424
 		{
 			"1.1417",
 			"2.1418",
@@ -1157,34 +1979,60 @@ void guest_rooms_1417_1424()
 			"6.1422",
 			"7.1423",
 			"8.1424",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1417_1424);
+		asking_questions(options_hallway_1417_1424);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_14 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_14 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
-void guest_rooms_1425_1432()
+}	//返回floor_14()
+
+void hallway_1425_1432()
 {
-	bool back_to_floor_14{ false };
 	while (true)
 	{
-		time_output();
-		cout << "你来到了走廊：1425-1432。";
-		get_enter();
-		check();
-		vector<string>options_guest_rooms_1425_1432
+		location.in_hallways = true;
+		location.hallway = Hallway::hallway_1425_1432;
+		if (location.in_rooms)
+		{
+			int room{ static_cast<int>(location.room) };
+			switch (room)
+			{
+
+			}
+		}
+		if (new_entry)
+		{
+			time_output();
+			cout << "你来到了走廊：1425-1432。";
+			get_enter();
+			check();
+			new_entry = false;
+		}
+		if (start_last_function)
+		{
+			start_last_function = false;
+			goto passed_label_hallway_1425_1432;
+		}
+		switch (furcon_time)
+		{
+
+		}
+	passed_label_hallway_1425_1432:
+		vector<string>options_hallway_1425_1432
 		{
 			"1.1425",
 			"2.1426",
@@ -1194,21 +2042,23 @@ void guest_rooms_1425_1432()
 			"6.1430",
 			"7.1431",
 			"8.1432",
-			"9.其他走廊"
+			"9.其他走廊",
+			"0.保存并退出",
+			"Enter.留在此地"
 		};
-		asking_questions(options_guest_rooms_1425_1432);
+		asking_questions(options_hallway_1425_1432);
 		switch (choice_input)
 		{
-		case 9:
-			back_to_floor_14 = true;
-			break;
+		case 0:
+			new_entry = true;
+			save_state();
+			exit(0);
+		case -1:
+			continue;
 		default:
 			cout << "这是别人的房间，不能随便进哦。";
-			break;
-		}
-		if (back_to_floor_14 == true)
-		{
-			break;
+			get_enter();
+			continue;
 		}
 	}
-}
+}	//返回floor_14()

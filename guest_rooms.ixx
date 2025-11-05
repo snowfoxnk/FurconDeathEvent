@@ -1,6 +1,6 @@
 export module guest_rooms;
 import std;
-import "globals.h";
+import globals;
 import universal;
 import rooms;
 using namespace std;
